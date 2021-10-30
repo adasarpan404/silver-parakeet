@@ -1,0 +1,19 @@
+{
+  "name": "botanical_sample",
+  "version": "1.0.0",
+  "description": "this is for herbarium ",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Arpan Das",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.10",
+    "morgan": "^1.10.0"
+  }
+}
