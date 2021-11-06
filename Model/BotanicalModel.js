@@ -22,6 +22,10 @@ const sampleSchema = new mongoose.Schema({
     family:{
         type: String, 
         required: [true, 'Please tell us the name of family']
+    },
+    image:{
+        type: String, 
+        required: [true, 'Please enter image']
     }
 
 });
