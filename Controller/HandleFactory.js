@@ -39,8 +39,11 @@ exports.createOne = Model => catchAsync(async (req, res, next) => {
         }
     })
 })
-exports.getOne = (Model) => catchAsync(async (req, res, next) => {
-    const doc = Model.findById(req.params.id);
+exports.getOne = Model => catchAsync(async (req, res, next) => {
+    
+
+    const doc = await Model.findById(req.params.id);
+
     res.status(200).json({
         status: 'success',
         data: {

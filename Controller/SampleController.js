@@ -19,11 +19,13 @@ const upload = multer({
     fileFilter: multerFilter
 });
 
-exports.uploadUserPhoto = upload.single('photo')
+exports.uploadSamplePhoto = upload.single('image')
 
-exports.resizeUserPhoto = catchAsync(async(req, res, next)=>{
+exports.resizeSamplePhoto = catchAsync(async(req, res, next)=>{
+
     if(!req.file) return next();
-    req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+    req.file.filename = `sample-${req.user.id}-${Date.now()}.jpeg`;
+    
     await sharp(req.file.buffer)
     .resize(500,500)
     .toFormat('jpeg')
@@ -33,8 +35,10 @@ next();
 })
 
 exports.createSample = catchAsync(async(req, res, next)=> {
-    if(req.file) req.body.image = req.file.fileName;
-    const doc = await Model.create(req.body);
+    if(req.file) req.body.image = req.file.filename;
+
+    
+    const doc = await Sample.create(req.body);
     res.status(201).json({
         status: 'success', 
         data: {
