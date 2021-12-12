@@ -49,7 +49,6 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/sample', sampleRouter);
 app.use('/api/v1/user', userRouter);
-
 app.use(globalErrorHandler);
 
 module.exports = app;

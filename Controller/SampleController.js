@@ -36,9 +36,20 @@ exports.resizeSamplePhoto = catchAsync(async (req, res, next) => {
 
 exports.createSample = catchAsync(async (req, res, next) => {
     if (req.file) req.body.image = req.file.filename;
-    
+
     const doc = await Sample.create(req.body);
     res.status(201).json({
+        status: 'success',
+        data: {
+            data: doc
+        }
+    })
+})
+exports.findSample = catchAsync(async (req, res, next) => {
+    const searchField = req.query.species;
+    console.log(searchField)
+    const doc = await Sample.find({ species: { $regex: searchField, $options: '$i' } })
+    res.status(200).json({
         status: 'success',
         data: {
             data: doc
