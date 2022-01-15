@@ -16,6 +16,7 @@ const sampleSchema = new mongoose.Schema({
     },
     image: {
         type: String,
+        required: [true, 'please insert image']
     },
     siteofcollection: {
         type: String,
